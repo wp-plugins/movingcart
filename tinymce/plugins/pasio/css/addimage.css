@@ -1,0 +1,113 @@
+﻿div#tab-header {
+	margin: 0;
+	padding: 0 5px;
+	font-weight: bold;
+	position: relative;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	height: 33px;
+	background-color: #f9f9f9;
+	border-bottom-color: #dfdfdf;
+}
+
+#div_basic{
+position:relative;
+}
+
+#div_basic .icon_preview{
+width:220px;
+height:140px;
+position:absolute;
+right:5px;
+top:35px;
+border:#dfdfdf 1px solid;
+}
+
+#cart_icon {
+position:absolute;
+width:24px;
+height:24px;
+}
+
+#basic th.label{
+padding: 5px 5px 5px 0;
+}
+
+#basic label{
+font-weight: bold;
+font-size: 12px;
+color: #464646;
+}
+
+img.alignleft, .alignleft {
+float: left;
+margin-right: 5px;
+}
+
+.describe td {
+vertical-align: middle;
+}
+
+.describe input[type="text"], .describe textarea {
+border: 1px solid #DFDFDF;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+}
+
+input[type="text"].long, textarea.long{
+width:460px;
+}
+
+input[type="text"].short, textarea.short{
+width:230px;
+}
+
+#saveeditimg {
+padding: 10px 0 0 5px;
+border-top: 1px solid #CCC;
+}
+
+textarea, input, select {
+font: 13px Verdana, Arial, Helvetica, sans-serif;
+margin: 1px;
+padding: 3px;
+}
+
+.submit input, .button, .button-primary, .button-secondary, .button-highlighted {
+font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
+text-decoration: none;
+font-size: 11px !important;
+line-height: 16px;
+padding: 2px 8px;
+cursor: pointer;
+border-width: 1px;
+border-style: solid;
+-webkit-border-radius: 11px;
+border-radius: 11px;
+-moz-box-sizing: content-box;
+-webkit-box-sizing: content-box;
+-khtml-box-sizing: content-box;
+box-sizing: content-box;
+}
+
+.button, .button-secondary, .submit input, input[type="button"], input[type="submit"] {
+border-color: #BBB;
+color: #464646;
+}
+
+.button, .submit input, .button-secondary {
+/*background: #F2F2F2 url(../images/white-grad.png) repeat-x scroll left top;*/
+background-color: #F2F2F2;
+text-shadow: rgba(255, 255, 255, 1) 0 1px 0;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="file"], input[type="button"], input[type="submit"], input[type="reset"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], select {
+border-color: #DFDFDF;
+background-color: white;
+color: #333;
+}
+
+.button, .button-secondary, .submit input, input[type="button"], input[type="submit"] {
+border-color: #BBB;
+color: #464646;
+}
