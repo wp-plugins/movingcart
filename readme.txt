@@ -44,9 +44,18 @@ woocommerce플러그인은 연동될 수 있는 테마가 정해져있지만,
 5. 워드프레스 관리자페이지에서 '무빙카트 설정'메뉴를 통해 판매자코드를 입력 후 저장합니다.
 
 == Frequently Asked Questions ==
+서비스 주소 : http://www.movingcart.kr
+페이스북 : https://www.facebook.com/movingcart
+블로그 : http://movingcart.tistory.com
 
+고객센터 : 070-8658-8870 / movingcart@siot.do
 
 == Screenshots ==
+1. /assets/wordpress_sample.png
+2. /assets/wordpress_guide1.gif
+3. /assets/wordpress_guide2.gif
+4. /assets/wordpress_guide3.jpg
+5. /assets/wordpress_guide4.jpg
 
 
 == Changelog ==
