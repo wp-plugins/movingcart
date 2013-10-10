@@ -51,11 +51,11 @@ woocommerce플러그인은 연동될 수 있는 테마가 정해져있지만,
 고객센터 : 070-8658-8870 / movingcart@siot.do
 
 == Screenshots ==
-1. screenshot-1.png
-2. screenshot-2.gif
-3. screenshot-3.gif
-4. screenshot-4.jpg
-5. screenshot-5.jpg
+1. 무빙카트 플러그인을 사용한 워드프레스 샘플 사이트입니다. (http://wp.movingcart.kr)
+2. 키워드 "movingcart"로 무빙카트 워드프레스 플러그인 검색
+3. http://www.movingcart.kr에서 판매자 회원가입 후 발급된 판매자 코드를 플러그인 설정에 저장. 게시물 작성 에디터에서 판매할 상품 이미지 등록(아이콘)
+4. 등록할 상품 이미지에 대한 판매 정보(가격, 수량, 옵션 등)들을 등록. 워드프레스를 새로고침하면 등록된 이미지에 구매하기 버튼이 생성됨.
+5. 특성이미지 선택 창에서도 상품 이미지를 등록할 수 있습니다.(적용된 테마에 따라 특성이미지나 첨부 이미지가 화면에 표시되는 경우, 이 방법으로 구매하기 버튼을 부착할 수 있습니다.)
 
 
 == Changelog ==
