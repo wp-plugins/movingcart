@@ -16,10 +16,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 상품 이미지를 이용한 상품 등록은 워드프레스 관리자 페이지에서 쉽게 가능합니다. (보다 자세한 내용은 http://www.movingcart.kr/pages/usage#!/wordpress 를 참고하세요.)
 판매할 상품은 이미지 URL주소를 기준으로 상품 가격, 판매 옵션 등 정보가 등록되어야 합니다. 
 
-http://wp.movingcart.kr에서 무빙카트 플러그인이 설치된 워드프레스를 체험하실 수 있습니다.
+http://wp.movingcart.kr 에서 무빙카트 플러그인이 설치된 워드프레스를 체험하실 수 있습니다.
 
 
-*   무빙카트 서비스(http://www.movingcart.kr) 에서 판매자 회원가입을 합니다.
+*   무빙카트 서비스( http://www.movingcart.kr ) 에서 판매자 회원가입을 합니다.
 *   무빙카트 플러그인을 다운받아 워드프레스에 설치합니다.
 *   무빙카트 설정 메뉴에서 판매자 회원가입 후 발급되는 판매자 코드를 저장합니다.
 *   판매할 상품 이미지를 선택해 등록하시면 됩니다. 등록되는 이미지 위에 구매하기 버튼이 생성됩니다.
@@ -34,13 +34,13 @@ woocommerce플러그인은 연동될 수 있는 테마가 정해져있지만,
 
 == Installation ==
 
-무빙카트 플러그인 설치, http://www.movingcart.kr에서 판매자 회원가입, 판매자 코드 저장이 필요합니다.
+무빙카트 플러그인 설치, http://www.movingcart.kr 에서 판매자 회원가입, 판매자 코드 저장이 필요합니다.
 
 
 1. 다운받은 movingcart.zip파일을 `/wp-content/plugins/` 디렉토리에 복사합니다.
 2. unzip movingcart.zip으로 압축 파일을 해제하면 movingcart폴더가 생성됩니다.
 3. 워드프레스 관리자페이지에서 'Plugins'메뉴를 통해 무빙카트 플러그인을 활성화합니다. 
-4. http://www.movingcart.kr에서 판매자 회원가입 후 발급받은 판매자 코드(마이페이지에서 확인 가능)를 복사합니다. 
+4. http://www.movingcart.kr 에서 판매자 회원가입 후 발급받은 판매자 코드(마이페이지에서 확인 가능)를 복사합니다. 
 5. 워드프레스 관리자페이지에서 '무빙카트 설정'메뉴를 통해 판매자코드를 입력 후 저장합니다.
 
 == Frequently Asked Questions ==
@@ -55,9 +55,9 @@ http://movingcart.tistory.com
 070-8658-8870 / movingcart@siot.do
 
 == Screenshots ==
-1. 무빙카트 플러그인을 사용한 워드프레스 샘플 사이트입니다. (http://wp.movingcart.kr)
+1. 무빙카트 플러그인을 사용한 워드프레스 샘플 사이트입니다. ( http://wp.movingcart.kr )
 2. 키워드 "movingcart"로 무빙카트 워드프레스 플러그인 검색
-3. http://www.movingcart.kr에서 판매자 회원가입 후 발급된 판매자 코드를 플러그인 설정에 저장. 게시물 작성 에디터에서 판매할 상품 이미지 등록(아이콘)
+3. http://www.movingcart.kr 에서 판매자 회원가입 후 발급된 판매자 코드를 플러그인 설정에 저장. 게시물 작성 에디터에서 판매할 상품 이미지 등록(아이콘)
 4. 등록할 상품 이미지에 대한 판매 정보(가격, 수량, 옵션 등)들을 등록. 워드프레스를 새로고침하면 등록된 이미지에 구매하기 버튼이 생성됨.
 5. 특성이미지 선택 창에서도 상품 이미지를 등록할 수 있습니다.(적용된 테마에 따라 특성이미지나 첨부 이미지가 화면에 표시되는 경우, 이 방법으로 구매하기 버튼을 부착할 수 있습니다.)
 
@@ -66,7 +66,7 @@ http://movingcart.tistory.com
 
 = 1.0 =
 * 최초 배포
-* http://wp.movingcart.kr에 적용된 버전
+* http://wp.movingcart.kr 에 적용된 버전
 
 
 == Arbitrary section ==
