@@ -51,11 +51,11 @@ woocommerce플러그인은 연동될 수 있는 테마가 정해져있지만,
 고객센터 : 070-8658-8870 / movingcart@siot.do
 
 == Screenshots ==
-/assets/wordpress_sample.png
-/assets/wordpress_guide1.gif
-/assets/wordpress_guide2.gif
-/assets/wordpress_guide3.jpg
-/assets/wordpress_guide4.jpg
+1. wordpress_sample.png
+2. wordpress_guide1.gif
+3. wordpress_guide2.gif
+4. wordpress_guide3.jpg
+5. wordpress_guide4.jpg
 
 
 == Changelog ==
