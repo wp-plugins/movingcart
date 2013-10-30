@@ -46,7 +46,8 @@ if(!class_exists('PasioImagePlugin')) {
 		
 		function pasio_script_add() {
 			wp_deregister_script( 'pasio-script' );
-			wp_register_script( 'pasio-script', $this->script_url);
+			wp_register_script( 'pasio-script', $this->script_url, array(), false, true);
+			//wp_register_script( 'pasio-script', $this->script_url);
 			wp_enqueue_script( 'pasio-script' );
 		}
 
@@ -56,6 +57,12 @@ if(!class_exists('PasioImagePlugin')) {
 			}
 
 			$slug = get_option('pasio_slug');
+			$show_widget = get_option('show_widget');
+
+			if ( "N" == $show_widget ) {
+				return "$url' id='movingcart-sdk' slug='$slug' widget='false";
+			}
+
 			return "$url' id='movingcart-sdk' slug='$slug";
 		}
 
@@ -206,8 +213,17 @@ if(!class_exists('PasioImagePlugin')) {
 						<table class="form-table">
 							<tbody>
 								<tr valign="top">
-									<th scope="row" style="width:100px;"><label for="pasio_pass">판매자 코드</label></th>
-									<td><input class="regular-text" name="pasio_slug" type="text" id="pasio_slug" value="<?=get_option('pasio_slug')?>" /><a target="_blank" href="http://www.movingcart.kr/users/my">판매자코드 알아보기</a></td>
+									<th scope="row" style="width:100px;"><label for="pasio_slug">판매자 코드</label></th>
+									<td><input class="regular-text" name="pasio_slug" type="text" id="pasio_slug" value="<?=get_option('pasio_slug')?>" /></td>
+									<td><a target="_blank" href="http://www.movingcart.kr/users/my">판매자코드 알아보기</a></td>
+								</tr>
+								<tr valign="top">
+									<th scope="row" style="width:100px;">무빙카트 위젯 <br/>보여주기</th>
+									<td>
+										<label for="show_widget_y"><input name="show_widget" type="radio" id="show_widget_y" value="Y" <?= get_option('show_widget')!='N'?'checked':'' ?>/>보여주기</label><br/>
+										<label for="show_widget_n"><input name="show_widget" type="radio" id="show_widget_n" value="N" <?= get_option('show_widget')=='N'?'checked':'' ?>/>감추기</label>
+									</td>
+									<td><img src="http://buy.movingcart.kr/img/external/mc_widget_bar.png"/><br/>웹사이트 오른쪽 하단에 보여지는 빨간 위젯(구매자가 장바구니/주문내역을 확인해볼 수 있는 버튼)의 표시 여부를 결정합니다. <br/>관리자 페이지의 "외모 > 메뉴"에서 "링크 메뉴"의 URL값을 #open_movingcart로 저장하시면 동일한 기능을 하는 메뉴가 생성됩니다.<br/><strong><xmp><a href="#open_movingcart">장바구니</a></xmp></strong>태그를 통해서도 동일한 기능을 제공할 수 있습니다.</td>
 								</tr>
 							</tbody>
 						</table>
@@ -226,10 +242,11 @@ if(!class_exists('PasioImagePlugin')) {
 	new PasioImagePlugin();
 }
 
-if (isset($_POST['pasio_slug']) && isset($_POST['action']) && $_POST['action'] == "update_pasio"){
+if (isset($_POST['action']) && $_POST['action'] == "update_pasio"){
 	require_once(ABSPATH .'wp-includes/pluggable.php');
-	if (wp_verify_nonce($_POST['pasio-user-info'],'pasio-options')){ 
+	if (wp_verify_nonce($_POST['pasio-user-info'],'pasio-options')){
 		update_option('pasio_slug',$_POST['pasio_slug']);
+		update_option('show_widget',$_POST['show_widget']);
 	}else{ ?>
 		<div class="error">update failed</div><?php
 	}
