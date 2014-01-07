@@ -12,10 +12,8 @@ if(!class_exists('PasioImagePlugin')) {
 	
 	class PasioImagePlugin {
 
-		private $script_url = 'http://www.movingcart.kr/js/movingcart.js';
+		private $script_url = 'http://dev.movingcart.kr/js/movingcart-src.js';
 		private $admin_script_url = 'http://www.movingcart.kr/js/movingcart-wadmin.js';
-		//private $admin_script_url = 'http://www.movingcart.kr/js/movingcart.js';
-
 	
 		public function __construct() {
 			register_activation_hook(__FILE__, array( &$this, 'pasio_plugin_install') );
