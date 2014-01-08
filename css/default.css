@@ -1,0 +1,17 @@
+﻿#siot_pasiobtn_holder{
+padding: 2px;
+position: absolute;
+display: none;
+z-index: 999998;
+}
+
+#siot_pasiobtn{
+border-color: #999;
+background-color: #EEE;
+margin: 2px;
+padding: 2px;
+border-width: 1px;
+border-style: solid;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
