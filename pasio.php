@@ -3,7 +3,7 @@
  Plugin Name: MovingCart
  Plugin URI: http://wp.movingcart.kr
  Description: 워드프레스(Wordpress)에 다른 e-commerce 플러그인을 설치할 필요없이, 신용카드결제까지 가능한 쇼핑몰로 바뀝니다.
- Version: 1.0
+ Version: 1.1.3
  Author: SIOT
  Author URI: http://www.movingcart.kr
  License: GPL2
@@ -14,8 +14,6 @@ if(!class_exists('PasioImagePlugin')) {
 
 		private $script_url = 'http://www.movingcart.kr/js/movingcart.js';
 		private $admin_script_url = 'http://www.movingcart.kr/js/movingcart-wadmin.js';
-		//private $admin_script_url = 'http://www.movingcart.kr/js/movingcart.js';
-
 	
 		public function __construct() {
 			register_activation_hook(__FILE__, array( &$this, 'pasio_plugin_install') );
@@ -23,7 +21,7 @@ if(!class_exists('PasioImagePlugin')) {
 			register_uninstall_hook( __FILE__, array( &$this, 'pasio_plugin_remove' ) );
 
 			add_action('admin_enqueue_scripts', array( &$this, 'pasio_admin_script_enqueue') );
-			add_action('wp_enqueue_scripts', array(&$this, 'pasio_script_add'));
+			add_action('wp_enqueue_scripts', array(&$this, 'pasio_script_add'), 99);
 
 			add_filter('clean_url', array(&$this, 'add_slug_to_script'), 11, 1);
 			
@@ -46,8 +44,9 @@ if(!class_exists('PasioImagePlugin')) {
 		
 		function pasio_script_add() {
 			wp_deregister_script( 'pasio-script' );
-			wp_register_script( 'pasio-script', $this->script_url, array(), false, true);
-			//wp_register_script( 'pasio-script', $this->script_url);
+			//wp_register_script( 'pasio-script', $this->script_url, array(), false, true);
+			// ver 1.1.1 wp_footer()를 호출하지 않는 theme들이 있어서 아래 방식으로 다시 변경(head에 script붙이는 방식)
+			wp_register_script( 'pasio-script', $this->script_url);
 			wp_enqueue_script( 'pasio-script' );
 		}
 

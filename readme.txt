@@ -3,8 +3,8 @@ Contributors: movingcart
 Donate link: http://www.movingcart.kr
 Tags: movingcart, commerce, woocommerce
 Requires at least: 3.0.1
-Tested up to: 3.6.1
-Stable tag: 1.1.0
+Tested up to: 3.8.0
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,12 @@ http://movingcart.tistory.com
 
 
 == Changelog ==
+= 1.1.2 =
+* XSS공격 보안 강화
+
+= 1.1.1 =
+* theme에 따라 wp_footer()를 호출하지 않는 theme들이 있어서 무빙카트 설치 스크립트가 실행되지 않는 경우가 있었습니다. wp_footer()를 호출하지 않는 theme에서도 무빙카트 스크립트가 동작할 수 있도록 수정되었습니다.
+
 = 1.1.0 =
 * 오른쪽 하단의 "무빙카트 위젯" 표시여부 옵션 추가. "무빙카트 위젯"은 구매자가 어디서든 장바구니/주문내역을 확인하고 싶을 때 클릭하는 위젯입니다.
 * "무빙카트 위젯"을 숨기고, 메인 메뉴/사이드바 메뉴 등을 통해 동일한 기능을 제공할 수 있도록 <xmp><a href="#open_movingcart">장바구니</a></xmp> 태그를 지원합니다. 
