@@ -12,7 +12,7 @@ if(!class_exists('PasioImagePlugin')) {
 	
 	class PasioImagePlugin {
 
-		private $script_url = 'http://dev.movingcart.kr/js/movingcart-src.js';
+		private $script_url = 'http://www.movingcart.kr/js/movingcart.js';
 		private $admin_script_url = 'http://www.movingcart.kr/js/movingcart-wadmin.js';
 
 	
