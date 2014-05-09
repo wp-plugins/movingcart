@@ -82,16 +82,16 @@
 
 			ed.onInit.add(function(ed) {
 
-				ed.onInit.add(function(ed) {
-                        tinymce.dom.Event.add(ed.getWin(), 'scroll', function(e) {
-                                ed.plugins.pasio_plugin._hideButtons();
-                        });
-                        tinymce.dom.Event.add(ed.getBody(), 'dragstart', function(e) {
-                                ed.plugins.pasio_plugin._hideButtons();
-                        });
+				//ed.onInit.add(function(ed) {
+                ed.dom.bind(ed.getWin(), 'scroll', function(e) {
+                        ed.plugins.pasio_plugin._hideButtons();
                 });
+                ed.dom.bind(ed.getBody(), 'dragstart', function(e) {
+                        ed.plugins.pasio_plugin._hideButtons();
+                });
+                //});
 
-				ed.dom.events.add(ed.getBody(), 'dragstart', function(e) {
+				ed.dom.bind(ed.getBody(), 'dragstart', function(e) {
 					var parent;
 
 					if ( e.target.nodeName == 'IMG' && ( parent = ed.dom.getParent(e.target, 'div.mceTemp') ) ) {
@@ -184,7 +184,7 @@
 				//title : ed.getLang('wpeditimage.edit_img')
 			});
 
-			tinymce.dom.Event.add(editButton, 'mousedown', function(e) {
+			DOM.bind(editButton, 'mousedown', function(e) {
 				var ed = tinyMCE.activeEditor;
 				ed.windowManager.bookmark = ed.selection.getBookmark('simple');
 				ed.execCommand("Pasio_Image", true, DOM.getAttrib(editButton, 'movingcart-url-id'));
