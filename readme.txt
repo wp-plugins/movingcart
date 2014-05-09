@@ -3,8 +3,8 @@ Contributors: movingcart
 Donate link: http://www.movingcart.kr
 Tags: movingcart, commerce, woocommerce
 Requires at least: 3.0.1
-Tested up to: 3.8.0
-Stable tag: 1.1.3
+Tested up to: 3.9.1
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,9 @@ http://movingcart.tistory.com
 
 
 == Changelog ==
+= 1.1.4 =
+* TinyMCE 4.X에 대한 API변경
+
 = 1.1.2 =
 * XSS공격 보안 강화
 
