@@ -170,12 +170,18 @@ if(!class_exists('PasioImagePlugin')) {
 			
 			if ( get_user_option('rich_editing') == 'true') {
 				add_filter('mce_external_plugins', array(&$this, 'add_pasio_tinymce_plugin'));
+				add_filter('mce_buttons', array(&$this, 'add_movingcart_tinymce_toolbar'));
 			}
 		}
 		 
 		function add_pasio_tinymce_plugin($plugin_array) {
 			$plugin_array['pasio_plugin'] = plugins_url(basename(dirname(__FILE__)).'/tinymce/plugins/pasio/pasio_editor.js');
 			return $plugin_array;
+		}
+
+		function add_movingcart_tinymce_toolbar($buttons) {
+			array_push($buttons, 'movingcart_hash');
+   			return $buttons;
 		}
 
 		function pasio_admin_script_enqueue($hook) {
@@ -249,4 +255,4 @@ if (isset($_POST['action']) && $_POST['action'] == "update_pasio"){
 	}else{ ?>
 		<div class="error">update failed</div><?php
 	}
-}?>
+}

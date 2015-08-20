@@ -7,6 +7,7 @@
 
 		init: function(ed, url) {
 			var t = this, mouse = {};
+			var hash_disabled = true;
 
 			t.url = url;
 			t.editor = ed;
@@ -21,7 +22,149 @@
 						return;
 					}
 
-					$.getJSON('http://movingcart.kr/urls/lists/' + slug + '.json?callback=?', function(rsp) {
+					//register toolbar button 2015-08-20
+					ed.addButton('movingcart_hash', {
+						title : '무빙카트 상품링크',
+						cmd : 'movingcart_hash',
+						image : url + '/img/mc_icon.png'
+					});
+
+					// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('...');
+					ed.addCommand('Pasio_Image', function(ui, v) {
+						var el = ed.selection.getNode(), vp, H, W, cls = ed.dom.getAttrib(el, 'class');
+						var url_id = v;
+
+						if ( cls.indexOf('mceItem') != -1 || cls.indexOf('wpGallery') != -1 || el.nodeName != 'IMG' )
+							return;
+
+						vp = tinymce.DOM.getViewPort();
+						H = 500 < (vp.h - 70) ? 500 : vp.h - 70;
+						W = 900 < vp.w ? 900 : vp.w;
+
+						if ( url_id ) {
+							//window.open('http://www.movingcart.kr/urls/edit/' + url_id);
+							window.open('https://admin.movingcart.kr/products#/by_url');
+							/*ed.windowManager.open({
+								file: url + '/addimage.php?url_id=' + url_id + '&' + (new Date()).getTime(),
+								width: W+'px',
+								height: H+'px',
+								inline: true
+							});*/
+						} else {
+							window.open('https://admin.movingcart.kr/urls/add?target_url=' + encodeURIComponent(el.src));
+							/*ed.windowManager.open({
+								file: url + '/addimage.php?' + (new Date()).getTime(),
+								width: W+'px',
+								height: H+'px',
+								inline: true
+							});*/
+						}
+					});
+
+					ed.addCommand('movingcart_hash', function() {
+						if ( hash_disabled )
+							return;
+						/*ed.windowManager.open({
+							file : url + '/search.html',
+							width : 480,
+							height : 600,
+							inline : true,
+							title : '무빙카트 상품검색'
+						}, {
+							plugin_url : url // Plugin absolute URL
+						});*/
+						tb_show("Insert Shortcode", url + "/search.php?slug=" + slug);
+					})
+
+					ed.onInit.add(function(ed) {
+
+						//ed.onInit.add(function(ed) {
+		                ed.dom.bind(ed.getWin(), 'scroll', function(e) {
+		                        ed.plugins.pasio_plugin._hideButtons();
+		                });
+		                ed.dom.bind(ed.getBody(), 'dragstart', function(e) {
+		                        ed.plugins.pasio_plugin._hideButtons();
+		                });
+		                //});
+
+						ed.dom.bind(ed.getBody(), 'dragstart', function(e) {
+							var parent;
+
+							if ( e.target.nodeName == 'IMG' && ( parent = ed.dom.getParent(e.target, 'div.mceTemp') ) ) {
+								ed.selection.select(parent);
+							}
+						});
+					});
+
+					// resize the caption <dl> when the image is soft-resized by the user (only possible in Firefox and IE)
+					ed.onMouseUp.add(function(ed, e) {
+						if ( tinymce.isWebKit || tinymce.isOpera )
+							return;
+
+						if ( mouse.x && (e.clientX != mouse.x || e.clientY != mouse.y) ) {
+							var n = ed.selection.getNode();
+
+							if ( 'IMG' == n.nodeName ) {
+								window.setTimeout(function(){
+									var DL = ed.dom.getParent(n, 'dl.wp-caption'), width;
+
+									if ( n.width != mouse.img_w || n.height != mouse.img_h )
+										n.className = n.className.replace(/size-[^ "']+/, '');
+
+									if ( DL ) {
+										width = ed.dom.getAttrib(n, 'width') || n.width;
+										width = parseInt(width, 10);
+										ed.dom.setStyle(DL, 'width', 10 + width);
+										ed.execCommand('mceRepaint');
+									}
+								}, 100);
+							}
+						}
+						mouse = {};
+					});
+
+					ed.onBeforeExecCommand.add(function(ed, cmd, ui, val) {
+						ed.plugins.pasio_plugin._hideButtons();
+		            });
+
+		            ed.onSaveContent.add(function(ed, o) {
+		            	ed.plugins.pasio_plugin._hideButtons();
+		            });
+
+		            ed.onMouseDown.add(function(ed, e) {
+		            	if ( e.target.nodeName != 'IMG' )
+		            		ed.plugins.pasio_plugin._hideButtons();
+		            });
+
+					// show editimage buttons
+					ed.onMouseDown.add(function(ed, e) {
+						var target = e.target;
+
+						if ( target.nodeName != 'IMG' ) {
+							if ( target.firstChild && target.firstChild.nodeName == 'IMG' && target.childNodes.length == 1 )
+								target = target.firstChild;
+							else
+								return;
+						}
+
+						if ( ed.dom.getAttrib(target, 'class').indexOf('mceItem') == -1 ) {
+							mouse = {
+								x: e.clientX,
+								y: e.clientY,
+								img_w: target.clientWidth,
+								img_h: target.clientHeight
+							};
+							
+							ed.plugins.pasio_plugin._showButtons(target, 'siot_pasiobtn_holder');
+						}
+					});
+
+					ed.onNodeChange.add(function(ed, cm, n, co) {
+						hash_disabled = co && n.nodeName != 'A';
+					});
+
+/*
+					$.getJSON('http://admin.movingcart.kr/urls/lists/' + slug + '.json?callback=?', function(rsp) {
 						var url_list = rsp;
 						var images = $(ed.getBody()).find('img');
 						
@@ -36,6 +179,7 @@
 							})
 						})
 					});
+*/
 				})(jQuery);
 			}
 
@@ -47,121 +191,6 @@
 			} else {
 				init_movingcart();
 			}
-
-			// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('...');
-			ed.addCommand('Pasio_Image', function(ui, v) {
-				var el = ed.selection.getNode(), vp, H, W, cls = ed.dom.getAttrib(el, 'class');
-				var url_id = v;
-
-				if ( cls.indexOf('mceItem') != -1 || cls.indexOf('wpGallery') != -1 || el.nodeName != 'IMG' )
-					return;
-
-				vp = tinymce.DOM.getViewPort();
-				H = 500 < (vp.h - 70) ? 500 : vp.h - 70;
-				W = 900 < vp.w ? 900 : vp.w;
-
-				if ( url_id ) {
-					//window.open('http://www.movingcart.kr/urls/edit/' + url_id);
-					window.open('http://www.movingcart.kr/products#/by_url');
-					/*ed.windowManager.open({
-						file: url + '/addimage.php?url_id=' + url_id + '&' + (new Date()).getTime(),
-						width: W+'px',
-						height: H+'px',
-						inline: true
-					});*/
-				} else {
-					window.open('http://www.movingcart.kr/urls/add?target_url=' + encodeURIComponent(el.src));
-					/*ed.windowManager.open({
-						file: url + '/addimage.php?' + (new Date()).getTime(),
-						width: W+'px',
-						height: H+'px',
-						inline: true
-					});*/
-				}
-			});
-
-			ed.onInit.add(function(ed) {
-
-				//ed.onInit.add(function(ed) {
-                ed.dom.bind(ed.getWin(), 'scroll', function(e) {
-                        ed.plugins.pasio_plugin._hideButtons();
-                });
-                ed.dom.bind(ed.getBody(), 'dragstart', function(e) {
-                        ed.plugins.pasio_plugin._hideButtons();
-                });
-                //});
-
-				ed.dom.bind(ed.getBody(), 'dragstart', function(e) {
-					var parent;
-
-					if ( e.target.nodeName == 'IMG' && ( parent = ed.dom.getParent(e.target, 'div.mceTemp') ) ) {
-						ed.selection.select(parent);
-					}
-				});
-			});
-
-			// resize the caption <dl> when the image is soft-resized by the user (only possible in Firefox and IE)
-			ed.onMouseUp.add(function(ed, e) {
-				if ( tinymce.isWebKit || tinymce.isOpera )
-					return;
-
-				if ( mouse.x && (e.clientX != mouse.x || e.clientY != mouse.y) ) {
-					var n = ed.selection.getNode();
-
-					if ( 'IMG' == n.nodeName ) {
-						window.setTimeout(function(){
-							var DL = ed.dom.getParent(n, 'dl.wp-caption'), width;
-
-							if ( n.width != mouse.img_w || n.height != mouse.img_h )
-								n.className = n.className.replace(/size-[^ "']+/, '');
-
-							if ( DL ) {
-								width = ed.dom.getAttrib(n, 'width') || n.width;
-								width = parseInt(width, 10);
-								ed.dom.setStyle(DL, 'width', 10 + width);
-								ed.execCommand('mceRepaint');
-							}
-						}, 100);
-					}
-				}
-				mouse = {};
-			});
-
-			ed.onBeforeExecCommand.add(function(ed, cmd, ui, val) {
-				ed.plugins.pasio_plugin._hideButtons();
-            });
-
-            ed.onSaveContent.add(function(ed, o) {
-            	ed.plugins.pasio_plugin._hideButtons();
-            });
-
-            ed.onMouseDown.add(function(ed, e) {
-            	if ( e.target.nodeName != 'IMG' )
-            		ed.plugins.pasio_plugin._hideButtons();
-            });
-
-			// show editimage buttons
-			ed.onMouseDown.add(function(ed, e) {
-				var target = e.target;
-
-				if ( target.nodeName != 'IMG' ) {
-					if ( target.firstChild && target.firstChild.nodeName == 'IMG' && target.childNodes.length == 1 )
-						target = target.firstChild;
-					else
-						return;
-				}
-
-				if ( ed.dom.getAttrib(target, 'class').indexOf('mceItem') == -1 ) {
-					mouse = {
-						x: e.clientX,
-						y: e.clientY,
-						img_w: target.clientWidth,
-						img_h: target.clientHeight
-					};
-					
-					ed.plugins.pasio_plugin._showButtons(target, 'siot_pasiobtn_holder');
-				}
-			});			
 		},
 
 		_createButtons : function() {
