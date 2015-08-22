@@ -24,9 +24,9 @@
 
 					//register toolbar button 2015-08-20
 					ed.addButton('movingcart_hash', {
-						title : '무빙카트 상품링크',
+						title : '무빙카트 상품링크(링크할 텍스트 또는 이미지를 드래그하세요)',
 						cmd : 'movingcart_hash',
-						image : url + '/img/mc_icon.png'
+						image : url + '/img/movingcart.png'
 					});
 
 					// Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('...');
@@ -63,7 +63,7 @@
 
 					ed.addCommand('movingcart_hash', function() {
 						if ( hash_disabled )
-							return;
+							return alert('링크할 텍스트 또는 이미지를 드래그해 선택해주세요.');
 						/*ed.windowManager.open({
 							file : url + '/search.html',
 							width : 480,
@@ -73,7 +73,9 @@
 						}, {
 							plugin_url : url // Plugin absolute URL
 						});*/
-						tb_show("Insert Shortcode", url + "/search.php?slug=" + slug);
+						if ( !slug ) 	return alert('"무빙카트 설정"메뉴에서 판매자 코드를 설정해주세요.');
+
+						tb_show("링크할 무빙카트 상품을 검색", url + "/search.php?slug=" + slug);
 					})
 
 					ed.onInit.add(function(ed) {

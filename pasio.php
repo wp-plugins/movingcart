@@ -1,9 +1,9 @@
 <?php
 /*
  Plugin Name: MovingCart
- Plugin URI: http://wp.movingcart.kr
+ Plugin URI: http://demo.movingcart.kr
  Description: 워드프레스(Wordpress)에 다른 e-commerce 플러그인을 설치할 필요없이, 신용카드결제까지 가능한 쇼핑몰로 바뀝니다.
- Version: 1.2.0
+ Version: 1.2.1
  Author: SIOT
  Author URI: http://www.movingcart.kr
  License: GPL2
