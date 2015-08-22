@@ -3,8 +3,8 @@ Contributors: movingcart
 Donate link: http://www.movingcart.kr
 Tags: movingcart, commerce, woocommerce
 Requires at least: 3.0.1
-Tested up to: 3.9.1
-Stable tag: 1.1.4
+Tested up to: 4.3
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,13 +13,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 
 워드프레스에 팝업 레이어 형태로 쇼핑몰 기능을 삽입해주는 플러그인입니다. 무빙카트 플러그인 설치 후, 상품 이미지를 이용해 상품등록을 하게되면, 등록된 상품이미지위에 구매하기 버튼이 생성되어 쇼핑몰 기능을 이용하실 수 있습니다. 
-상품 이미지를 이용한 상품 등록은 워드프레스 관리자 페이지에서 쉽게 가능합니다. (보다 자세한 내용은 http://www.movingcart.kr/pages/usage#!/wordpress 를 참고하세요.)
+상품 이미지를 이용한 상품 등록은 워드프레스 관리자 페이지에서 쉽게 가능합니다. 
 판매할 상품은 이미지 URL주소를 기준으로 상품 가격, 판매 옵션 등 정보가 등록되어야 합니다. 
 
-http://wp.movingcart.kr 에서 무빙카트 플러그인이 설치된 워드프레스를 체험하실 수 있습니다.
+http://demo.movingcart.kr 에서 무빙카트 플러그인이 설치된 워드프레스를 체험하실 수 있습니다.
 
 
-*   무빙카트 서비스( http://www.movingcart.kr ) 에서 판매자 회원가입을 합니다.
+*   무빙카트 서비스( https://admin.movingcart.kr ) 에서 판매자 회원가입을 합니다.
 *   무빙카트 플러그인을 다운받아 워드프레스에 설치합니다.
 *   무빙카트 설정 메뉴에서 판매자 회원가입 후 발급되는 판매자 코드를 저장합니다.
 *   판매할 상품 이미지를 선택해 등록하시면 됩니다. 등록되는 이미지 위에 구매하기 버튼이 생성됩니다.
@@ -34,35 +34,43 @@ woocommerce플러그인은 연동될 수 있는 테마가 정해져있지만,
 
 == Installation ==
 
-무빙카트 플러그인 설치, http://www.movingcart.kr 에서 판매자 회원가입, 판매자 코드 저장이 필요합니다.
+무빙카트 플러그인 설치, https://admin.movingcart.kr 에서 판매자 회원가입, 판매자 코드 저장이 필요합니다.
 
 
 1. 다운받은 movingcart.zip파일을 `/wp-content/plugins/` 디렉토리에 복사합니다.
 2. unzip movingcart.zip으로 압축 파일을 해제하면 movingcart폴더가 생성됩니다.
 3. 워드프레스 관리자페이지에서 'Plugins'메뉴를 통해 무빙카트 플러그인을 활성화합니다. 
-4. http://www.movingcart.kr 에서 판매자 회원가입 후 발급받은 판매자 코드(마이페이지에서 확인 가능)를 복사합니다. 
+4. https://admin.movingcart.kr 에서 판매자 회원가입 후 발급받은 판매자 코드(마이페이지에서 확인 가능)를 복사합니다. 
 5. 워드프레스 관리자페이지에서 '무빙카트 설정'메뉴를 통해 판매자코드를 입력 후 저장합니다.
 
 == Frequently Asked Questions ==
-= 서비스 주소 =
+= 서비스 소개 =
 http://www.movingcart.kr
+= 관리자 페이지 =
+https://admin.movingcart.kr
 = 페이스북 =
 https://www.facebook.com/movingcart
-= 블로그 =
-http://movingcart.tistory.com
 
 = 고객센터 =
 070-8658-8870 / movingcart@siot.do
 
 == Screenshots ==
-1. 무빙카트 플러그인을 사용한 워드프레스 샘플 사이트입니다. ( http://wp.movingcart.kr )
+1. 무빙카트 플러그인을 사용한 워드프레스 샘플 사이트입니다. ( http://demo.movingcart.kr )
 2. 키워드 "movingcart"로 무빙카트 워드프레스 플러그인 검색
-3. http://www.movingcart.kr 에서 판매자 회원가입 후 발급된 판매자 코드를 플러그인 설정에 저장. 게시물 작성 에디터에서 판매할 상품 이미지 등록(아이콘)
+3. https://admin.movingcart.kr 에서 판매자 회원가입 후 발급된 판매자 코드를 플러그인 설정에 저장. 게시물 작성 에디터에서 판매할 상품 이미지 등록(아이콘)
 4. 등록할 상품 이미지에 대한 판매 정보(가격, 수량, 옵션 등)들을 등록. 워드프레스를 새로고침하면 등록된 이미지에 구매하기 버튼이 생성됨.
 5. 특성이미지 선택 창에서도 상품 이미지를 등록할 수 있습니다.(적용된 테마에 따라 특성이미지나 첨부 이미지가 화면에 표시되는 경우, 이 방법으로 구매하기 버튼을 부착할 수 있습니다.)
 
 
 == Changelog ==
+= 1.2.1 =
+* 워드프레스 4.3버전과의 호환성 확인
+* 상품검색 인터페이스 개선
+* 툴바 아이콘 변경
+
+= 1.2.0 =
+* 도메인 변경 및 hash link방식(#/mvct/url/1234) 지원
+
 = 1.1.4 =
 * TinyMCE 4.X에 대한 API변경
 
@@ -79,7 +87,7 @@ http://movingcart.tistory.com
 
 = 1.0 =
 * 최초 배포
-* http://wp.movingcart.kr 에 적용된 버전
+* http://demo.movingcart.kr 에 적용된 버전
 
 
 == Arbitrary section ==
